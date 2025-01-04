@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 .correct {
     color: green;
 }
