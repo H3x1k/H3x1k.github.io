@@ -13,24 +13,17 @@ let correctDigits = 0;
 let currentDigit = 0;
 let digitString = "";
 let lastReqPosition = -10;
-//let lastElement: Element = null
 const digitDiv = document.getElementById("digits");
-function requestDigits(s, Nd) {
+const inputField = document.getElementById("input-field");
+function init() {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch(`https://api.pi.delivery/v1/pi?start=${s}&numberOfDigits=${Nd}`);
-        const data = yield response.json();
-        return data.content;
-    });
-}
-document.addEventListener("keydown", (event) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    const key = event.key;
-    console.log(key);
-    console.log(digitString[0]);
-    if (digitString.length < 10) {
         lastReqPosition += 10;
         digitString += yield requestDigits(lastReqPosition, 10);
-    }
+    });
+}
+inputField.addEventListener("keydown", (event) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    const key = event.key;
     if (key == digitString[0]) {
         const newDigit = document.createElement("digit");
         newDigit.textContent = digitString[0];
@@ -40,14 +33,17 @@ document.addEventListener("keydown", (event) => __awaiter(void 0, void 0, void 0
             newDigit.className = "correct";
             digitString = digitString.slice(1);
         }
-        digitDiv === null || digitDiv === void 0 ? void 0 : digitDiv.appendChild(newDigit);
+        digitDiv.appendChild(newDigit);
+        digitDiv.style.width = digitDiv.scrollWidth + 'px';
+        console.log(digitDiv.style.width);
     }
     else {
         if (!isNaN(Number(key))) {
             const newDigit = document.createElement("digit");
             newDigit.textContent = key;
             newDigit.className = "incorrect";
-            digitDiv === null || digitDiv === void 0 ? void 0 : digitDiv.appendChild(newDigit);
+            digitDiv.appendChild(newDigit);
+            digitDiv.style.width = digitDiv.scrollWidth + 'px';
         }
     }
     if (key == "Backspace") {
@@ -55,6 +51,19 @@ document.addEventListener("keydown", (event) => __awaiter(void 0, void 0, void 0
         console.log(lastDigit);
         if (lastDigit && lastDigit.className == "incorrect") {
             digitDiv.removeChild(lastDigit);
+            digitDiv.style.width = digitDiv.scrollWidth + 'px';
         }
     }
+    if (digitString.length < 10) {
+        lastReqPosition += 10;
+        digitString += yield requestDigits(lastReqPosition, 10);
+    }
 }));
+function requestDigits(s, Nd) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield fetch(`https://api.pi.delivery/v1/pi?start=${s}&numberOfDigits=${Nd}`);
+        const data = yield response.json();
+        return data.content;
+    });
+}
+init();

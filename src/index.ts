@@ -4,24 +4,18 @@ let correctDigits: number = 0
 let currentDigit: number = 0
 let digitString: string = ""
 let lastReqPosition: number = -10
-//let lastElement: Element = null
 
-const digitDiv = document.getElementById("digits");
+const digitDiv = document.getElementById("digits") as HTMLElement;
+const inputField = document.getElementById("input-field") as HTMLElement;
 
-async function requestDigits(s: number, Nd: number): Promise<string> {
-    const response = await fetch(`https://api.pi.delivery/v1/pi?start=${s}&numberOfDigits=${Nd}`);
-    const data = await response.json();
-    return data.content;
+
+async function init() {
+    lastReqPosition += 10;
+    digitString += await requestDigits(lastReqPosition, 10);
 }
 
-document.addEventListener("keydown", async (event: KeyboardEvent) => {
+inputField.addEventListener("keydown", async (event) => {
     const key = event.key;
-    console.log(key);
-    console.log(digitString[0]);
-    if (digitString.length < 10) {
-        lastReqPosition += 10;
-        digitString += await requestDigits(lastReqPosition, 10);
-    }
     if (key == digitString[0]) {
         const newDigit = document.createElement("digit");
         newDigit.textContent = digitString[0];
@@ -31,13 +25,16 @@ document.addEventListener("keydown", async (event: KeyboardEvent) => {
             newDigit.className = "correct";
             digitString = digitString.slice(1);
         }
-        digitDiv?.appendChild(newDigit);
+        digitDiv.appendChild(newDigit);
+        digitDiv.style.width = digitDiv.scrollWidth + 'px';
+        console.log(digitDiv.style.width);
     } else {
         if (!isNaN(Number(key))) {
             const newDigit = document.createElement("digit");
             newDigit.textContent = key;
             newDigit.className = "incorrect"
-            digitDiv?.appendChild(newDigit);
+            digitDiv.appendChild(newDigit);
+            digitDiv.style.width = digitDiv.scrollWidth + 'px';
         }
     }
     if (key == "Backspace") {
@@ -45,7 +42,19 @@ document.addEventListener("keydown", async (event: KeyboardEvent) => {
         console.log(lastDigit);
         if (lastDigit && lastDigit.className == "incorrect") {
             digitDiv.removeChild(lastDigit);
+            digitDiv.style.width = digitDiv.scrollWidth + 'px';
         }
+    }
+    if (digitString.length < 10) {
+        lastReqPosition += 10;
+        digitString += await requestDigits(lastReqPosition, 10);
     }
 });
 
+async function requestDigits(s: number, Nd: number): Promise<string> {
+    const response = await fetch(`https://api.pi.delivery/v1/pi?start=${s}&numberOfDigits=${Nd}`);
+    const data = await response.json();
+    return data.content;
+}
+
+init()

@@ -7,24 +7,8 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div id="digits"></div>
-    <div class="dial-pad">
-        <button class="button">1</button>
-        <button class="button">2</button>
-        <button class="button">3</button>
-        <button class="button">4</button>
-        <button class="button">5</button>
-        <button class="button">6</button>
-        <button class="button">7</button>
-        <button class="button">8</button>
-        <button class="button">9</button>
-        <button class="button">0</button>
-    </div>
+    <div id="digits" class="digits"></div>
+    <input type="text" id="input-field" class="input-field" autofocus/>
     <script src="index.js"></script>
-    <script>
-        document.addEventListener('touchmove', function (event) {
-            event.preventDefault();
-        }, { passive: false });
-    </script>
 </body>
 </html>

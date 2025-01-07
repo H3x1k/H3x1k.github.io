@@ -1,38 +1,30 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #0000f0;
+    background-color: #f0f0f0;
     overflow: hidden;
 }
 
-.dial-pad {
-    display: grid;
-    grid-template-columns: repeat(3, 80px);
-    gap: 10px;
+.digits, .input-field {
+    position: absolute;
+    top: 0;
 }
 
-.button {
-    width: 80px;
-    height: 80px;
-    background-color: #007bff;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 80px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.2s ease;
+.digits {
+    width: 0px;
+    display: inline-block;
+    right: 50%;
+    white-space: nowrap;
+    transition: width 0.5s ease;
 }
 
-.button:active {
-    background-color: #0056b3;
+.input-field {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .correct {
