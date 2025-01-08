@@ -15,6 +15,7 @@ let digitString = "";
 let lastReqPosition = -10;
 const digitDiv = document.getElementById("digits");
 const inputField = document.getElementById("input-field");
+const counterDiv = document.getElementById("counter");
 function init() {
     return __awaiter(this, void 0, void 0, function* () {
         lastReqPosition += 10;
@@ -27,17 +28,19 @@ inputField.addEventListener("keydown", (event) => __awaiter(void 0, void 0, void
     if (key == digitString[0]) {
         const newDigit = document.createElement("digit");
         newDigit.textContent = digitString[0];
-        if (((_a = digitDiv === null || digitDiv === void 0 ? void 0 : digitDiv.lastElementChild) === null || _a === void 0 ? void 0 : _a.className) == "incorrect")
+        if (((_a = digitDiv.lastElementChild) === null || _a === void 0 ? void 0 : _a.className) == "incorrect") // entered multiple incorrect digits
             newDigit.className = "incorrect";
-        else {
+        else { // entered correct digit
             newDigit.className = "correct";
             digitString = digitString.slice(1);
+            correctDigits++;
+            counterDiv.innerHTML = correctDigits.toString();
         }
         digitDiv.appendChild(newDigit);
         digitDiv.style.width = digitDiv.scrollWidth + 'px';
         console.log(digitDiv.style.width);
     }
-    else {
+    else { // entered incorrect digit
         if (!isNaN(Number(key))) {
             const newDigit = document.createElement("digit");
             newDigit.textContent = key;
