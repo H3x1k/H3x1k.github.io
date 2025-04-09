@@ -294,6 +294,7 @@ footer {
     const reasoningstr = "The reason this fails is because this code is unsecure and AI won't explain why this is unsecure. If this where put into a real application, it would allow for attackers to do anything they want to your database.";
     let generated1 = false;
     let generated2 = false;
+    let debuged = false;
     function sleep(ms) {
   		return new Promise(resolve => setTimeout(resolve, ms));
 		}
@@ -320,20 +321,23 @@ footer {
       }
     }
     async function debug() {
-    	const codeexample = document.getElementsByClassName("codeexample")[0];
-      const code = codeexample.innerHTML;
-      const errorc = " ❌ ERROR: Should be i < prices.length";
-      let i = 0;
-      while (codeexample.innerHTML.indexOf("<br>", i) > -1) {
-      	await sleep(250);
-      	j = code.indexOf("<br>", i);
-        p = code.substring(0, j);
-        n = code.substring(j);
-        codeexample.innerHTML = [p, "⬤", n].join("");
-        i = j+5;
+    	if (debuged == false) {
+      	debuged = true;
+        const codeexample = document.getElementsByClassName("codeexample")[0];
+        const code = codeexample.innerHTML;
+        const errorc = " ❌ ERROR: Should be i < prices.length";
+        let i = 0;
+        while (codeexample.innerHTML.indexOf("<br>", i) > -1) {
+          await sleep(250);
+          j = code.indexOf("<br>", i);
+          p = code.substring(0, j);
+          n = code.substring(j);
+          codeexample.innerHTML = [p, "⬤", n].join("");
+          i = j+5;
+        }
+        let h = code.indexOf("i++) {");
+        codeexample.innerHTML = [code.substring(0, h+6), errorc, code.substring(h+6)].join("");
       }
-      let h = code.indexOf("i++) {");
-      codeexample.innerHTML = [code.substring(0, h+6), errorc, code.substring(h+6)].join("");
     }
   </script>
 </body>
