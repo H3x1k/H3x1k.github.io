@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demonstrate AI in software jobs with interactive tasks</title>
+
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  position: relative;
+  background-image: url("https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 6rem;
+  text-align: center;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+  filter: blur(8px); /* Apply blur effect */
+  z-index: 0; /* Send it behind the content */
+}
+header div {
+  position: relative;
+  z-index: 1; /* Keep the content above the blur effect */
+  padding: 20px;
+}
+header div a {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: -10px;
+  bottom: -5rem;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+.image-container {
+  width: 100%;
+  aspect-ratio: 3/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+section.demo {
+  background-color: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 800px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 80%;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 1rem;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005ecb;
+}
+
+footer {
+  padding: 1rem;
+  background-color: #eee;
+  margin-top: 3rem;
+}
+
+.chatbox {
+  background-color: black;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.textentry {
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: grey;
+  border-radius: 6px;
+  padding-left: 10px;
+  height: 50px;
+}
+.textentry p {
+  padding: 10px
+}
+
+.airesponse {
+  font-family: monospace;
+  color: white;
+}
+
+.generate {
+  margin: 10px 10px 10px auto;
+}
+
+.debug {
+  display: block;
+  margin: 0 auto;
+}
+
+.codeexample {
+  font-family: monospace;
+  color: white;
+}
+
+  </style>
+
+  
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI in Software Jobs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div>
+      <h1>The Role of AI in the Future of Software Development</h1>
+      <p>Artificial intelligence is rapidly becoming a valuable assistant in software-related jobs. It helps automate repetitive tasks, saving time and reducing error.</p>
+    </div>
+  </header>
+
+  <section class="demo">
+    <h2>Introduction</h2>
+    <p>
+    Artificial intelligence is not just another tool—it is fundamentally transforming the software development industry. While some fear AI will replace developers, history has shown that technological advancements enhance human productivity rather than eliminate jobs. AI is poised to reshape the field by automating repetitive tasks, improving efficiency, and expanding the capabilities of developers. Companies, software engineers, educators, and customers must recognize that AI is not an optional addition; it is an inevitable and powerful force that will define the future of software development.
+    </p>
+  </section>
+  
+  <section class="demo">
+    <h2>AI as an Enhancement, Not a Replacement</h2>
+    <div class="image-container">
+      <img src="https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></img>
+    </div>
+    <p>
+    One of the biggest misconceptions about AI in software development is that it will fully replace human programmers. However, AI lacks key elements such as creativity, deep problem-solving, and contextual reasoning—skills that are essential for high-quality software engineering. While AI can generate code, test applications, and automate debugging, it still requires human oversight to ensure reliability and innovation. Just as past technological advancements like high-level programming languages and integrated development environments (IDEs) revolutionized software development without eliminating programmers, AI will serve as an indispensable assistant rather than a substitute.
+    </p>
+  </section>
+
+  <section class="demo">
+    <h2>Increased Productivity and Efficiency</h2>
+    <p>
+    AI dramatically boosts productivity by handling repetitive and time-consuming tasks, allowing developers to focus on complex and creative aspects of software development. AI-powered tools like GitHub Copilot, OpenAI Codex, and AI-driven code review systems enable developers to write code faster, detect errors more efficiently, and streamline workflows. This increased efficiency leads to faster software delivery, reduced costs, and improved product quality, making AI an essential component of modern software engineering.<br><br>
+    Here is a AI code generation example
+    </p>
+    <div class="chatbox">
+      <div class="textentry">
+        <p>Generate a function to convert a list of dictionaries into a CSV file</p>  
+        <button class="generate" onclick="generate1()">Generate</button>
+      </div> 
+      <p class="airesponse">
+      </p>
+    </div>
+    
+    <p>
+    Here is an error detection example
+    </p>
+    
+    <div class="chatbox">
+      <button class="debug" onclick="debug()">Debug</button>
+      <p class="codeexample">
+      <font color="blue">function</font> <font color="red">calculateTotal</font>(prices) {<br>
+      &nbsp;&nbsp;<font color="blue">let</font> total = <font color="#ff6188">0</font>;<br>
+      &nbsp;&nbsp;<font color="blue">for</font> (<font color="blue">let</font> i = <font color="#ff6188">0</font>; i <= prices.length; i++) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;total += prices[i];<br>
+      &nbsp;&nbsp;}<br>
+      &nbsp;&nbsp;<font color="blue">return</font> total;<br>
+      }<br>
+      <br>
+      <font color="blue">const</font> items = [<font color="#ff6188">10</font>, <font color="#ff6188">20</font>, <font color="#ff6188">30</font>];<br>
+      <font color="#ff6188">console</font>.<font color="red">log</font>(<font color="red">calculateTotal</font>(items));<br>
+      </p>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>Shaping the Future of Software Jobs</h2>
+    <div class="image-container">
+      <img src="https://images.pexels.com/photos/9783353/pexels-photo-9783353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></img>
+    </div>
+    <p>Rather than eliminating jobs, AI is shifting the skillset required for software developers. Instead of focusing solely on manual coding, future developers will need to refine their expertise in system design, algorithm optimization, and AI integration. Companies that embrace AI-driven development will create new roles and opportunities, such as AI model trainers, ethical AI specialists, and AI-assisted software architects. This shift mirrors historical trends where automation created more jobs than it replaced by opening new fields and expanding industry demands.</p>
+  </section>
+  
+  <section class="demo">
+  <h2>AI in Software Education</h2>
+  <div class="image-container">
+      <img src="https://images.pexels.com/photos/4144179/pexels-photo-4144179.jpeg"></img>
+  </div>
+  <p>Educational institutions are already integrating AI into computer science curricula, preparing future developers to work alongside AI. Universities are incorporating AI-driven coding assistants, automated grading tools, and AI-based project simulations to enhance learning. This evolution ensures that upcoming generations of developers are equipped with both traditional programming skills and the ability to harness AI effectively. By adapting to AI-driven changes, educators can prepare students for a more dynamic and innovative future in software development.</p>
+</section>
+
+<section class="demo">
+  <h2>Where AI Fails</h2>
+  <p>
+  Despite its advantages, AI also has notable limitations and failure points in software development that cannot be ignored. One of the most critical concerns is AI's tendency to generate insecure, inefficient, or incorrect code. Without a deep understanding of context or intent, AI may produce solutions that appear functional but contain serious security vulnerabilities or logical flaws. It can hallucinate APIs, misuse libraries, or make assumptions that break codebases when integrated at scale. Furthermore, AI struggles with tasks that require long-term architectural planning, ethical judgment, or nuanced understanding of user needs. These shortcomings highlight the continued importance of experienced developers who can review, guide, and refine AI-generated outputs to ensure quality and safety in software products.
+  </p>
+  <p>
+  Here is an example of where AI fails
+  </p>
+  <div class="chatbox">
+      <div class="textentry">
+        <p>Write a function that gets user data from a MySQL database based on a username passed in the URL query string.</p>  
+        <button class="generate" onclick="generate2()">Generate</button>
+      </div> 
+      <p class="airesponse">
+      </p>
+  </div>
+  <p class="reasoning">
+  </p>
+</section>
+
+  <footer>
+    <p style="text-align: center;">Project by Hudson Conway</p>
+    <p>Image Sources</p>
+    <ul>
+      <li><a href="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">Header Image</a></li>
+      <li><a href="https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">Image 1</a></li>
+      <li><a href="https://images.pexels.com/photos/9783353/pexels-photo-9783353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">Image 2</a></li>
+      <li><a href="https://images.pexels.com/photos/4144179/pexels-photo-4144179.jpeg">Image 3</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    const str = [
+    "<font color=\"blue\">import</font> csv<br>",
+    "<br>",
+    "<font color=\"blue\">def</font> <font color=\"red\">save_dicts_to_csv</font>(data, filename):<br>",
+    "&nbsp;&nbsp;<font color=\"blue\">if not</font> data:<br>",
+    "&nbsp;&nbsp;&nbsp;&nbsp;<font color=\"blue\">return</font><br>",
+    "<br>",
+    "keys = data[<font color=\"#ff6188\">0</font>].keys()<br>",
+    "<font color=\"blue\">with</font> <font color=\"orange\">open</font>(filename, <font color=\"green\">'w'</font>, newline=<font color=\"green\">''</font>, encoding=<font color=\"green\">'utf-8'</font>) <font color=\"blue\">as</font> f:<br>",
+    "writer = csv.DictWriter(f, fieldnames=keys)<br>",
+    "writer.writeheader()<br>",
+    "writer.writerows(data)"
+    ];
+    const str2 = [
+    	"app.<font color=\"red\">get</font>(<font color=\"green\">'/user'</font>, (req, res) => {<br>",
+      "<font color=\"blue\">const</font> username = req.query.username;<br>",
+      "<font color=\"blue\">const</font> query = <font color=\"green\">`SELECT * FROM users WHERE username = '${username}'`</font>;<br>",
+      "<br>",
+      "connection.<font color=\"red\">query</font>(query, (err, results) => {<br>",
+      "&nbsp;&nbsp;<font color=\"blue\">if</font> (err) <font color=\"blue\">throw</font> err;<br>",
+      "&nbsp;&nbsp;&nbsp;&nbsp;res.<font color=\"red\">json</font>(results);<br>",
+      "&nbsp;&nbsp;});<br>",
+      "});<br>"
+    ];
+    const reasoningstr = "The reason this fails is because this code is unsecure and AI won't explain why this is unsecure. If this where put into a real application, it would allow for attackers to do anything they want to your database.";
+    let generated1 = false;
+    let generated2 = false;
+    function sleep(ms) {
+  		return new Promise(resolve => setTimeout(resolve, ms));
+		}
+    async function generate1() {
+    	if (generated1 == false) {
+      	generated1 = true;
+        const response = document.getElementsByClassName("airesponse")[0];
+        for (let i = 0; i < str.length; i++) {
+          await sleep(250);
+          response.innerHTML += str[i]
+        }
+      }
+    }
+    async function generate2() {
+    	if (generated2 == false) {
+      	generated2 = true;
+        const response2 = document.getElementsByClassName("airesponse")[1];
+        const reason = document.getElementsByClassName("reasoning")[0];
+        for (let i = 0; i < str2.length; i++) {
+          await sleep(250);
+          response2.innerHTML += str2[i]
+        }
+        reason.innerHTML = reasoningstr;
+      }
+    }
+    async function debug() {
+    	const codeexample = document.getElementsByClassName("codeexample")[0];
+      const code = codeexample.innerHTML;
+      const errorc = " ❌ ERROR: Should be i < prices.length";
+      let i = 0;
+      while (codeexample.innerHTML.indexOf("<br>", i) > -1) {
+      	await sleep(250);
+      	j = code.indexOf("<br>", i);
+        p = code.substring(0, j);
+        n = code.substring(j);
+        codeexample.innerHTML = [p, "⬤", n].join("");
+        i = j+5;
+      }
+      let h = code.indexOf("i++) {");
+      codeexample.innerHTML = [code.substring(0, h+6), errorc, code.substring(h+6)].join("");
+    }
+  </script>
+</body>
+</html>
+
+  <script>
+    
+  </script>
+</body>
+</html>
